@@ -13,7 +13,7 @@ void yyerror(const char *s);
 }
 
 %token <label> TK_DEF TK_RETURN TK_IF TK_ELSE TK_WHILE TK_FOR TK_IN TK_PRINT
-%token <label> TK_NUM TK_ID
+%token <label> TK_NUM TK_ID TK_STRING
 %token TK_EQ TK_NEQ TK_LT TK_GT TK_LE TK_GE TK_ASSIGN
 %token TK_PLUS TK_MINUS TK_TIMES TK_DIVIDE
 %token TK_LPAREN TK_RPAREN TK_COLON
@@ -23,6 +23,7 @@ void yyerror(const char *s);
 %%
 
 program:
+    | statement
     | program statement
     ;
 
@@ -91,6 +92,7 @@ assignment:
 
 expression:
       TK_NUM
+    | TK_STRING
     | TK_ID
     | expression TK_PLUS expression
     | expression TK_MINUS expression
@@ -106,5 +108,7 @@ void yyerror(const char *s) {
 }
 
 int main() {
-    return yyparse();
+    while (1) {
+        yyparse();
+    }
 }

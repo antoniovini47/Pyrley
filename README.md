@@ -17,8 +17,8 @@ flex [lexico.l](http://_vscodecontentref_/1)
 2. Gere o arquivo y.tab.c a partir do arquivo sintatico.y usando o Bison:
 bison -d [sintatico.y](http://_vscodecontentref_/2)
 
-3. Compile os arquivos gerados (lex.yy.c e y.tab.c) junto com o arquivo y.tab.h:
-gcc lex.yy.c y.tab.c -o parser -lfl
+3. Compile os arquivos gerados (lex.yy.c e syntacticName.tab.c) junto com o arquivo syntacticName.tab.h:
+gcc lex.yy.c syntacticName.tab.c -o parser -lfl
 
 4. Execute o parser:
 ./parser < pythonCodeSample.py

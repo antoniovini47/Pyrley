@@ -29,6 +29,7 @@
 #define TK_COLON 24
 #define TK_INDENT 25
 #define TK_DEDENT 26
+#define TK_STRING 27
 
 // Declare yylval
 typedef union {
@@ -75,6 +76,7 @@ ID {LETRA}({LETRA}|{DIGITO})*
 "\)"        { printf("TK_RPAREN\n"); return TK_RPAREN; }
 ":"         { printf("TK_COLON\n"); return TK_COLON; }
 
+"\"[^\"]*\""  { yylval.label = strdup(yytext); printf("TK_NUM: %s\n", yytext); return TK_STRING;}
 {NUM}       { yylval.label = yytext; printf("TK_NUM: %s\n", yytext); return TK_NUM; }
 {ID}        { yylval.label = yytext; printf("TK_ID: %s\n", yytext); return TK_ID; }
 
