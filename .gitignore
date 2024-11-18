@@ -50,3 +50,9 @@ Pyrley
 PyrleyCompiler
 PythonCompiler.c
 Pyrley
+
+#Generated files
+*.yy.c
+parserPython
+sintatico.tab.c
+sintatico.tab.h
