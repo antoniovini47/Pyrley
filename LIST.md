@@ -1,0 +1,3 @@
+- Ele não está identificando coluna no yac;
+- Ele não identifica o parênterese depois do print; 
+- Ele não funciona o for;
