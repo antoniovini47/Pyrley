@@ -1,31 +1,38 @@
 %{
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
-	#include <stdarg.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <stdarg.h>
 
-	#define MAXRECST 200
-	#define MAXST 100
-	#define MAXCHILDREN 100
-	#define MAXLEVELS 20
-	#define MAXQUADS 1000
+    #define MAXRECST 200
+    #define MAXST 100
+    #define MAXCHILDREN 100
+    #define MAXLEVELS 20
+    #define MAXQUADS 1000
 
-	
-	
+    // Add location structure
+    typedef struct YYLTYPE {
+        int first_line;
+        int first_column;
+        int last_line;
+        int last_column;
+    } YYLTYPE;
+    #define YYLTYPE_IS_DECLARED 1
 
-	extern int yylineno;
-	extern int depth;
-	extern int top();
-	extern int pop();
-	int currentScope = 1, previousScope = 1;
-	
-	int *arrayScope = NULL;
+    extern int yylineno;
+    extern int depth;
+    extern int top();
+    extern int pop();
+    extern int yycolumn;  // Add this line
+    int currentScope = 1, previousScope = 1;
+    
+    int *arrayScope = NULL;
 
-	void yyerror(const char *msg){
-		//printf("\nSyntax Error at Line %d, Column : %d\n",  yylineno, yylloc.last_column);
-		printf("\nSyntax Error at Line %d, Column : ERROR IDENTIFYING COLLUMN\n",  yylineno);
-		exit(0);
-	}
+
+    void yyerror(const char *msg) {
+        printf("\nSyntax Error at Line %d, Column: %d\n", yylineno, yycolumn);
+        exit(0);
+    }
 
 	int yylex(void);
 	
