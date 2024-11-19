@@ -2,6 +2,7 @@
 
 import scipy
 
+print("HelloWorld")
 x = 2
 y = 1
 

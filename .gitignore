@@ -1,2 +1,6 @@
 ./output
 .DS_Store
+output/grammar.tab.c
+output/grammar.tab.h
+output/lex.yy.c
+output/parser
