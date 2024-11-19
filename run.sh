@@ -6,14 +6,49 @@ SAMPLES_DIR="samples"
 
 OS="$(uname)"
 
-if [ "$#" -lt 1 ]; then
-    echo "Uso: $0 <SAMPLE_NAME>"
-    echo "Exemplo: $0 defAndGeneralSample.py"
-    exit 1
-fi
+animated_menu() {
+    TITLE="Pyrley"
+    TITLE2="The final Python Compiler"
+    SUBTITLE="Alunos: Pedro.h CarlinJS, Toin, Korea"
 
-SAMPLE_NAME="$1"
+    # Colors
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    YELLOW='\033[0;33m'
+    BLUE='\033[0;34m'
+    CYAN='\033[0;36m'
+    NC='\033[0m' # No Color
 
+    # Array of colors for animation
+    COLORS=("$RED" "$GREEN" "$YELLOW" "$BLUE" "$CYAN")
+
+    # Function to center text
+    center_text() {
+        local text="$1"
+        local term_width=$(tput cols)
+        local text_width=${#text}
+        local padding=$(( (term_width - text_width) / 2 ))
+        printf "%${padding}s%s\n" "" "$text"
+    }
+
+    # Animate Title
+    for ((i = 0; i < 10; i++)); do
+        clear
+        color="${COLORS[$((i % ${#COLORS[@]}))]}"
+        echo -e "${color}"
+        figlet "$TITLE" | while IFS= read -r line; do center_text "$line"; done
+        figlet "$TITLE2" | while IFS= read -r line; do center_text "$line"; done
+        sleep 0.2
+    done
+
+    # Display Subtitle
+    echo -e "${CYAN}"
+    figlet "$SUBTITLE" | while IFS= read -r line; do center_text "$line"; done
+    echo -e "${NC}"
+    sleep 2
+}
+
+# Check if required directories exist
 if [ ! -d "$COMPILER_DIR" ]; then
     echo "Erro: Diretório $COMPILER_DIR não encontrado!"
     exit 1
@@ -24,10 +59,24 @@ if [ ! -d "$SAMPLES_DIR" ]; then
     exit 1
 fi
 
-if [ ! -f "$SAMPLES_DIR/$SAMPLE_NAME" ]; then
-    echo "Erro: Arquivo de exemplo $SAMPLE_NAME não encontrado no diretório $SAMPLES_DIR!"
+# Display animated menu
+animated_menu
+
+# List available samples
+echo "Arquivos disponíveis no diretório $SAMPLES_DIR:"
+samples=($(ls "$SAMPLES_DIR"))
+for i in "${!samples[@]}"; do
+    echo "$i) ${samples[$i]}"
+done
+
+# Prompt user to select a sample
+read -p "Digite o número correspondente ao arquivo que deseja executar: " choice
+if [[ ! "$choice" =~ ^[0-9]+$ ]] || [ "$choice" -lt 0 ] || [ "$choice" -ge "${#samples[@]}" ]; then
+    echo "Seleção inválida!"
     exit 1
 fi
+
+SAMPLE_NAME="${samples[$choice]}"
 
 mkdir -p "$OUTPUT_DIR"
 
