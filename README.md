@@ -2,7 +2,7 @@
 ### IFMA - Instituto Federal do Maranhão
 ### Orientador: Varley Santos de Sá
 ### Alunos:
- - <a href="https://github.com/antoniovini47">Antonio Vinícius Rodrigues Oliveira</a> - Análise Léxica
+ - <a href="https://github.com/antoniovini47">Antônio Vinícius Rodrigues Oliveira</a> - Análise Léxica
  - <a href="https://github.com/pedro31415">Pedro Henrique Araújo Cardoso</a> - Análise Sintática
  - <a href="https://github.com/CsPaulo">Paulo Rafael Costa Silva</a> - Análise Semântica
  - <a href="https://github.com/carlossantos74">Carlos Alessandro Ferreira dos Santos</a> - Código de 3 endereços
