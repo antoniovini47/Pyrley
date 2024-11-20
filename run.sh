@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMPILER_DIR="Compiler"
+COMPILER_DIR="compiler"
 OUTPUT_DIR="output"
 SAMPLES_DIR="samples"
 

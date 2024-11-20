@@ -88,10 +88,10 @@
 	/*-----------------------------Declarations----------------------------------*/
 	
 	record* findRecord(const char *name, const char *type, int scope);
-  node *createID_Const(char *value, char *type, int scope);
-  int power(int base, int exp);
-  void updateCScope(int scope);
-  void resetDepth();
+  	node *createID_Const(char *value, char *type, int scope);
+  	int power(int base, int exp);
+  	void updateCScope(int scope);
+  	void resetDepth();
 	int scopeBasedTableSearch(int scope);
 	void initNewTable(int scope);
 	void init();
@@ -700,8 +700,8 @@
 	{
 		int i = 0, j = 0;
 		
-		printf("\n----------------------------All Symbol Tables----------------------------");
-		printf("\nScope\tName\tType\t\tDeclaration\tLast Used Line\n");
+		printf("\n----------------------------Tabela de Símbolos----------------------------");
+		printf("\nEscopo\tNome\tTipo\t\tDeclaração\tÚltima Linha Usada\n");
 		for(i=0; i<=sIndex; i++)
 		{
 			for(j=0; j<symbolTables[i].noOfElems; j++)
@@ -741,7 +741,7 @@
 	
 	void printAST(node *root)
 	{
-		printf("\n-------------------------Abstract Syntax Tree--------------------------\n");
+		printf("\n-------------------------Árvore sintática abstrata--------------------------\n");
 		ASTToArray(root, 0);
 		int j = 0, p, q, maxLevel = 0, lCount = 0;
 		
@@ -820,22 +820,9 @@
 		return flag;
 	}
 	
-	void printQuads()
-	{
-		printf("\n--------------------------------All Quads---------------------------------\n");
-		int i = 0;
-		for(i=0; i<qIndex; i++)
-		{
-			if(allQ[i].I > -1)
-				printf("%d\t%s\t%s\t%s\t%s\n", allQ[i].I, allQ[i].Op, allQ[i].A1, allQ[i].A2, allQ[i].R);
-		}
-		printf("--------------------------------------------------------------------------\n");
-	}
-	
 	void freeAll()
 	{
 		deadCodeElimination();
-		printQuads();
 		printf("\n");
 		int i = 0, j = 0;
 		for(i=0; i<=sIndex; i++)
@@ -869,7 +856,7 @@
 %%
 
 StartDebugger : {init();} StartParse T_EndOfFile {printf("\nValid Python Syntax\n");  printAST($2);
-		printf("\n-------------------------3 Address Code Generation--------------------------\n"); codeGenOp($2); printQuads(); printSTable(); freeAll(); exit(0);} ;
+		printf("\n-------------------------Código de 3 endereços--------------------------\n"); codeGenOp($2); printSTable(); freeAll(); exit(0);} ;
 
 constant : T_Number {insertRecord("Constant", $<text>1, @1.first_line, currentScope); $$ = createID_Const("Constant", $<text>1, currentScope);}
          | T_String {insertRecord("Constant", $<text>1, @1.first_line, currentScope); $$ = createID_Const("Constant", $<text>1, currentScope);};

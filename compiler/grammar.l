@@ -18,7 +18,7 @@
  		#ifdef DEBUG
  		if(startFlag)
  		{
- 			printf("---------------------------------Token Sequence--------------------------\n1 ");
+ 			printf("---------------------------------Sequência de Tokens--------------------------\n1 ");
  			startFlag=0;
  		}
  		
