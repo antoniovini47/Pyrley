@@ -32,7 +32,6 @@ brew install figlet
 flex --version
 bison --version
 ```
----
 ### 2. Executando
 #### 2.1. Automaticamente
 ```
