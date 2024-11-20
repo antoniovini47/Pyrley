@@ -2,10 +2,10 @@
 ### IFMA - Instituto Federal do Maranhão
 ### Orientador: Varley Santos de Sá
 ### Alunos:
- - <a href="https://github.com/antoniovini47">Antonio Vinícius Rodrigues Oliveira</a>
- - <a href="https://github.com/carlossantos74">Carlos Alessandro Ferreira dos Santos</a>
- - <a href="https://github.com/CsPaulo">Paulo Rafael Costa Silva</a> 
- - <a href="https://github.com/pedro31415">Pedro Henrique Araújo Cardoso</a>
+ - <a href="https://github.com/antoniovini47">Antonio Vinícius Rodrigues Oliveira</a> - Análise Léxima
+ - <a href="https://github.com/carlossantos74">Carlos Alessandro Ferreira dos Santos</a> - Análise Sintática
+ - <a href="https://github.com/CsPaulo">Paulo Rafael Costa Silva</a> - Análise Semântica
+ - <a href="https://github.com/pedro31415">Pedro Henrique Araújo Cardoso</a> - Código de 3 endereços
  ----
 ## 1. Como executar
 ### 1.1. Dependências
