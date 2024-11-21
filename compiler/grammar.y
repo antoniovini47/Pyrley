@@ -855,8 +855,14 @@
 
 %%
 
-StartDebugger : {init();} StartParse T_EndOfFile {printf("\nValid Python Syntax\n");  printAST($2);
-		printf("\n-------------------------Código de 3 endereços--------------------------\n"); codeGenOp($2); printSTable(); freeAll(); exit(0);} ;
+StartDebugger : {init();} StartParse T_EndOfFile {
+		printf("\nValid Python Syntax\n");  printAST($2);
+		printf("\n-------------------------Código de 3 endereços--------------------------\n"); 
+		codeGenOp($2); 
+		printSTable(); 
+		freeAll(); 
+		exit(0);
+};
 
 constant : T_Number {insertRecord("Constant", $<text>1, @1.first_line, currentScope); $$ = createID_Const("Constant", $<text>1, currentScope);}
          | T_String {insertRecord("Constant", $<text>1, @1.first_line, currentScope); $$ = createID_Const("Constant", $<text>1, currentScope);};
